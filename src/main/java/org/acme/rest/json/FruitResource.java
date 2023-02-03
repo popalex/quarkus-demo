@@ -14,7 +14,7 @@ import javax.ws.rs.Path;
 public class FruitResource {
 
     private Set<Fruit> fruits = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
-    static System.Logger LOG = System.getLogger(FruitSyncService.class.getName());
+    static System.Logger LOG = System.getLogger(FruitResource.class.getName());
 
     public FruitResource() {
         fruits.add(new Fruit("Apple", "Winter fruit"));
