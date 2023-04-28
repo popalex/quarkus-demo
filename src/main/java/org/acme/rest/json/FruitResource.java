@@ -30,7 +30,7 @@ public class FruitResource {
 
     @POST
     public Set<Fruit> add(Fruit fruit) {
-        LOG.log(Level.DEBUG, "POST fruits");
+        LOG.log(Level.DEBUG, "POST fruitss");
         fruits.add(fruit);
         return fruits;
     }
