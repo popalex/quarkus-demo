@@ -11,6 +11,13 @@
 			"installMaven": "true",
 			"installGradle": "false"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"redhat.vscode-quarkus"
+			]
+		}
 	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
