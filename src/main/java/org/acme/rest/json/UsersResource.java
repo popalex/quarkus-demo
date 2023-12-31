@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
+import org.eclipse.microprofile.jwt.Claims;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.resteasy.reactive.NoCache;
 
 import io.quarkus.security.Authenticated;
@@ -12,19 +14,29 @@ import io.quarkus.security.identity.SecurityIdentity;
 
 
 @Path("/api/users")
-// @Authenticated
+@Authenticated
 public class UsersResource {
 
     @Inject
     SecurityIdentity securityIdentity;
 
+    @Inject
+    JsonWebToken accessToken;
+
     @GET
     @Path("/me")
     // @RolesAllowed("user")
-    @Authenticated
     @NoCache
     public User me() {
         return new User(securityIdentity);
+    }
+
+    @GET
+    @Path("/email")
+    @NoCache
+    public String email()
+    {
+        return (String)accessToken.claim(Claims.email.name()).orElseGet(() -> null);
     }
 
     public static class User {
