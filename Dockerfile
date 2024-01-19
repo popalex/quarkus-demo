@@ -15,4 +15,4 @@ COPY --from=build --chown=javauser:javauser /code/target/*-runner.jar /app/app.j
 # if this is NOT a uber jar build, add the next line
 # COPY --from=build --chown=javauser:javauser target/lib/ lib/
 USER javauser
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "app.jar", "-Dquarkus.http.host=0.0.0.0"]
